@@ -1,0 +1,4 @@
+1)  Проблемы  ENUM
+2) Фигня с  NULL  в  VB
+3) IOpenRowset
+4) Command::GetColumnInfo при ошибке возвращает S_OK  

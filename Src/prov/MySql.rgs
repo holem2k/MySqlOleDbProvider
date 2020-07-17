@@ -1,0 +1,27 @@
+HKCR
+{
+	MySql.1 = s 'MySQL OLE DB Provider'
+	{
+		CLSID = s '{30D3C022-A927-11D5-AF08-00C026EFFB81}'
+	}
+	MySql = s 'MySQL OLE DB Provider'
+	{
+		CLSID = s '{30D3C022-A927-11D5-AF08-00C026EFFB81}'
+		CurVer = s 'MySQL.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {30D3C022-A927-11D5-AF08-00C026EFFB81} = s 'MySQL OLE DB Provider'
+		{
+			ProgID = s 'MySQL.1'
+			VersionIndependentProgID = s 'MySQL'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'OLE DB Provider' = s 'MySQL OLE DB Provider'
+			OLEDB_SERVICES = d '4294967295'
+			'TypeLib' = s '{1F73FC9D-A915-11D5-AF08-00C026EFFB81}'
+		}
+	}
+}

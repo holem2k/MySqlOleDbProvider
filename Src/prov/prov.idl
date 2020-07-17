@@ -1,0 +1,57 @@
+// prov.idl : IDL source for prov.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (prov.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(736d0580-addd-11d5-af08-00c026effb81),
+	local,
+	pointer_default(ptr)
+]
+interface IConnectionSource : IUnknown
+{
+	HRESULT GetConnection([out] void **ppConnection);
+	HRESULT ReleaseConnection([in] void *pConnection);
+}
+
+// IIsRowset используется для определения был ли
+// создан набор рядов (может быть и пустой).
+// SQL команды, такие как SELECT, всегда создают набор рядов,
+// команды, как INSERT, не создают набор рядов никогда. 
+// Если набор рядов был создан, возвращается S_OK, иначе S_FALSE
+
+[
+	object,
+	uuid(736d0580-addd-11d5-af08-00c026effb92),
+	local,
+	pointer_default(ptr)
+]
+interface IIsRowset : IUnknown
+{
+	HRESULT IsRowset();
+}
+
+[
+	uuid(1F73FC9D-A915-11D5-AF08-00C026EFFB81),
+	version(1.0),
+	helpstring("prov 1.0 Type Library")
+]
+library PROVLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(30D3C022-A927-11D5-AF08-00C026EFFB81),
+		helpstring("MySql OLE DB Provider")
+	]
+	coclass MySql
+	{
+		interface IUnknown;
+	};
+};
